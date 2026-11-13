@@ -1,0 +1,34 @@
+site_name: Karaka — Engineering Notes
+site_description: Building a contract risk analysis agent for Tunisian law, with verifiable citations.
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      toggle: {icon: material/brightness-7, name: Dark mode}
+    - scheme: slate
+      toggle: {icon: material/brightness-4, name: Light mode}
+  features:
+    - navigation.indexes
+    - content.code.copy
+plugins:
+  - search
+  - blog:
+      blog_dir: .
+      post_date_format: long
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
+nav:
+  - index.md
