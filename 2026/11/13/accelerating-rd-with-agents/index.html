@@ -1,0 +1,968 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Building a contract risk analysis agent for Tunisian law, with verifiable citations.">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Accelerating R&D with Agents - Karaka — Engineering Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#accelerating-rd-with-agents" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Karaka — Engineering Notes" class="md-header__button md-logo" aria-label="Karaka — Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Karaka — Engineering Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Accelerating R&amp;D with Agents
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Karaka — Engineering Notes" class="md-nav__button md-logo" aria-label="Karaka — Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Karaka — Engineering Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Categories
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Categories
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/rd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R&amp;D
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subproblems-and-the-micro-iteration-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subproblems and the micro-iteration mechanism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-ai-comes-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where AI comes in
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-the-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defining the metrics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining the metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metrics-we-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics we track
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The agent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sources-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sources of truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subagents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subagents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Artifacts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-experiment-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run experiment tool
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-11-13 00:00:00+00:00" class="md-ellipsis">November 13, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/rd/">R&amp;D</a>, 
+                              <a href="../../../../category/agents/">Agents</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              7 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="accelerating-rd-with-agents">Accelerating R&amp;D with Agents<a class="headerlink" href="#accelerating-rd-with-agents" title="Permanent link">&para;</a></h1>
+<p><strong>Use case:</strong> studying security-constrained redispatch subproblems in Benders decomposition.</p>
+<!-- more -->
+
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/AntaresSimulatorTeam/antares-xpansion">Antares-Xpansion</a> is a transmission
+expansion planning tool built on <strong>Benders decomposition</strong>. We use it to study how the electrical
+grid should grow. We consider a set of candidate lines <span class="arithmatex">\(Z\)</span> and the operating cost <span class="arithmatex">\(\theta_h\)</span> of
+each hour <span class="arithmatex">\(h\)</span>. The objective is:</p>
+<div class="arithmatex">\[
+\min \; \sum_{l \in Z} c_l \, z_l \;+\; \sum_{h} \theta_h
+\]</div>
+<p>where the first term is the investment cost of the chosen lines and the second is the total
+operating cost.</p>
+<p>Benders decomposition splits this problem into two parts:</p>
+<ul>
+<li>a <strong>master problem</strong> (mixed-integer linear) that decides which lines to build;</li>
+<li>a set of <strong>subproblems</strong>, one per hour, that compute the redispatch and its operating cost for
+  the chosen grid.</li>
+</ul>
+<h2 id="subproblems-and-the-micro-iteration-mechanism">Subproblems and the micro-iteration mechanism<a class="headerlink" href="#subproblems-and-the-micro-iteration-mechanism" title="Permanent link">&para;</a></h2>
+<p>The subproblems are <strong>security-constrained redispatch</strong> problems. At the optimum, most of their
+constraints, especially the flow constraints, are not binding. We use this with a
+<strong>micro-iteration mechanism</strong>. We start from a relaxed problem that keeps only the
+generation-unit constraints. Then we add flow constraints step by step, following the mechanism
+below:</p>
+<p><img alt="Micro-iteration mechanism (simplified)" src="../../../../images/micro_iteration_mechanism_simplified.png" /></p>
+<h2 id="where-ai-comes-in">Where AI comes in<a class="headerlink" href="#where-ai-comes-in" title="Permanent link">&para;</a></h2>
+<p>This approach gave a large speed-up for the whole Benders decomposition. But our implementation
+added several <strong>hyperparameters and design choices</strong> that could be made differently. Examples are
+how many constraints to add at each step, which violated flows to pick first, and when to stop.
+Tuning them means running many experiments and analysing the metrics to find ideas that improve
+performance further. These ideas often come from knowledge of grid modelling and linear
+optimization.</p>
+<p>To speed up this work, we built an <strong>agent harness</strong>. It designs and runs the experiments,
+collects the metrics, and helps us read the results.</p>
+<h2 id="defining-the-metrics">Defining the metrics<a class="headerlink" href="#defining-the-metrics" title="Permanent link">&para;</a></h2>
+<h3 id="metrics-we-track">Metrics we track<a class="headerlink" href="#metrics-we-track" title="Permanent link">&para;</a></h3>
+<p>Our goal is to <strong>reduce the total Benders run time</strong> by cutting the cumulative time spent solving
+subproblems at each iteration.</p>
+<p>For this, we track the following for every subproblem at every Benders iteration:</p>
+<ul>
+<li>the number of micro-iterations;</li>
+<li>the cumulative time spent in micro-iterations;</li>
+<li>the share of N-K and K constraints added at each micro-iteration.</li>
+</ul>
+<p>We also compare added constraints across two dimensions:</p>
+<ul>
+<li><strong>Between subproblems (across hours):</strong> which added constraints are common, and which of them
+  are active at the optimum. The aim is to find heuristics that let us solve one hour faster by
+  reusing the solution found for a previous hour.</li>
+<li><strong>Across iterations (same subproblem):</strong> which constraints added at iteration <span class="arithmatex">\(k\)</span> are added
+  again, or are active, at iteration <span class="arithmatex">\(k+1\)</span>. This tells us whether it is worth warm-starting a
+  subproblem at iteration <span class="arithmatex">\(k+1\)</span> by injecting the constraints added at iteration <span class="arithmatex">\(k\)</span> from the
+  start.</li>
+</ul>
+<p>Together, these metrics give the agent the context it needs to reason about the experiments it
+runs (or that we run). It can then analyse the results, find useful insights, and support us with
+deeper knowledge and, in some cases, decisions.</p>
+<h2 id="the-agent">The agent<a class="headerlink" href="#the-agent" title="Permanent link">&para;</a></h2>
+<p><img alt="Subproblem analyzer agent architecture" src="../../../../images/subproblem_analyzer_agent_architecture_v2.png" /></p>
+<h3 id="sources-of-truth">Sources of truth<a class="headerlink" href="#sources-of-truth" title="Permanent link">&para;</a></h3>
+<p>The code involved in this study is split across three independent repositories:</p>
+<ol>
+<li><strong>The Benders decomposition code.</strong> This is the code behind the Benders executable. It is
+   fully model-agnostic and works as a general-purpose Benders decomposition framework.</li>
+<li><strong>The micro-iteration plugin.</strong> This is an external library that plugs into the Benders
+   decomposition through callbacks and implements our micro-iteration logic. It has four
+   hyperparameters:<ul>
+<li><code>max_added_constraints</code>: the maximum number of violated constraints added at each
+  micro-iteration;</li>
+<li><code>add_N_first</code>: a boolean. If true, at a given micro-iteration we add only the N overflow
+  constraints for a line;</li>
+<li><code>tol_N</code>: the tolerance used to detect overflow on N constraints;</li>
+<li><code>tol_N_K</code>: the tolerance used to detect overflow on N-K constraints.</li>
+</ul>
+</li>
+<li><strong>The study repository.</strong> This folder holds the MPS files for the master problem and the
+   subproblems. It always includes a JSON file with all the hyperparameters of the Benders
+   algorithm.</li>
+</ol>
+<h3 id="subagents">Subagents<a class="headerlink" href="#subagents" title="Permanent link">&para;</a></h3>
+<p>For this, the R&amp;D agent has <strong>two coding subagents</strong>, one for each repository. Each subagent has
+two roles:</p>
+<ul>
+<li><strong>Explore:</strong> the R&amp;D agent gives the subagent a specific exploration task, and the subagent
+  returns clear feedback.</li>
+<li><strong>Edit:</strong> to run an experiment, the R&amp;D agent may decide to change a specific behaviour in the
+  code. It asks the subagent to make the change. The subagent makes it on a new branch, which
+  produces a new executable that the R&amp;D agent then fetches.</li>
+</ul>
+<h3 id="instructions">Instructions<a class="headerlink" href="#instructions" title="Permanent link">&para;</a></h3>
+<p>The agent's main job is to use knowledge of both transmission expansion planning and linear
+optimization. We tell it explicitly, in its prompt, to combine the two:</p>
+<blockquote>
+<p><strong>Combine grid and optimization knowledge</strong></p>
+<p>Your value comes from combining two kinds of knowledge:</p>
+<ul>
+<li><strong>Grid knowledge:</strong> how power flows, how congestion appears, which lines and contingencies
+  tend to matter, and the heuristics grid operators use.</li>
+<li><strong>Linear optimization knowledge:</strong> how the problem is built and how its structure affects
+  the solver, such as active constraints, degeneracy, duals, and how the problem changes when
+  constraints are added.</li>
+</ul>
+<p>Study the MPS files that model the redispatch problem on the grid: their variables,
+constraints, bounds, and how each part relates to the grid. MPS files can be large, so use
+name patterns, counts, and targeted extracts instead of reading them whole. Ask the plugin
+subagent how variable and constraint names are built, so you can map them to grid elements.</p>
+</blockquote>
+<h3 id="skills">Skills<a class="headerlink" href="#skills" title="Permanent link">&para;</a></h3>
+<p>The agent handles several kinds of tasks: analysing past experiments, making plots and diagrams
+on request, and running new experiments. To keep the system prompt short instead of hard-coding
+every behaviour, we split these behaviours into <strong>skills</strong>. The agent loads a skill only when the
+task needs it.</p>
+<ul>
+<li><strong>Analysis skill.</strong> Defines the process the agent follows to run an analysis. It reads the log
+  files that contain the metrics we track, reasons about them, and answers the user's question.</li>
+<li><strong>Plot skill.</strong> Gives the agent the rules for building graphs: which Python library to use, the
+  expected style, and how to save the figures.</li>
+<li><strong>Build experiment skill.</strong> Gives the agent the process for designing and launching an
+  experiment. It follows these steps:<ol>
+<li><strong>State the hypothesis.</strong> Write what the experiment tests and what result is expected, for
+   example: <em>"adding N constraints first reduces the number of micro-iterations on congested
+   hours."</em></li>
+<li><strong>Choose the change.</strong> Decide whether the experiment needs only new hyperparameter values
+   (plugin hyperparameters or Benders settings in the study's JSON file), or a change in the
+   code.</li>
+<li><strong>Build the executables.</strong> If code must change, call the matching subagent (Benders or
+   plugin) with a precise edit task. The subagent makes the change on a new branch and
+   produces an executable, which the agent fetches.</li>
+<li><strong>Prepare the run.</strong> Set up the study folder (MPS files and JSON file) and keep a
+   reference run with the current settings for comparison.</li>
+<li><strong>Run and record.</strong> Launch the runs and save, for each one, the branch, the executable,
+   the hyperparameters, and the log files, so every result can be traced back and
+   reproduced.</li>
+<li><strong>Hand over to analysis.</strong> Pass the logs to the Analysis skill to compare the new run
+   against the reference and check the hypothesis.</li>
+</ol>
+</li>
+</ul>
+<h3 id="artifacts">Artifacts<a class="headerlink" href="#artifacts" title="Permanent link">&para;</a></h3>
+<p>This folder holds the Markdown reports from past analyses. The main agent keeps access to them
+and can use them in later queries.</p>
+<p>For example, we asked the agent to analyse the common active constraints between subproblems
+within one iteration. This produced a report, <code>subproblems_analysis_per_iteration.md</code>. In later
+queries the agent can read this report and build on it, instead of running the same analysis
+again.</p>
+<p>This way the agent's <strong>knowledge of the study grows over time</strong>, and each new analysis can build
+on earlier findings.</p>
+<h3 id="run-experiment-tool">Run experiment tool<a class="headerlink" href="#run-experiment-tool" title="Permanent link">&para;</a></h3>
+<p>To run an experiment, the agent calls the <strong>run experiment tool</strong>. The tool takes three inputs:
+the Benders executable, the micro-iteration plugin (<code>plugin.so</code>), and the path to the study
+folder. It starts a <strong>Docker container</strong> with these files and runs the study inside it. Each run
+happens in its own clean, isolated environment, so results can be reproduced. When the run ends,
+the agent gets back the log files for its analysis.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The agent made our experiments and research <strong>much faster</strong>. Tasks that used to take a lot of
+manual work, like changing the code, building executables, running studies and going through
+the logs, can now be chained together and run with little effort from us. This lets us test more
+ideas in less time.</p>
+<p>The agent knows both linear optimization and the electrical grid, and that <strong>combination</strong> turned
+out to be very useful. By reasoning with both kinds of knowledge, it pointed out patterns in the
+metrics that we had missed. These gave us new ideas for improving the micro-iteration mechanism.</p>
+<p>Still, the agent <strong>does not replace human expertise</strong>, and it is far from doing so. It needed
+that expertise at every stage. When we built it, we had to write its instructions, define its
+skills and choose the metrics it tracks. When it gives results, we have to interpret them and
+check that they make sense. Above all, we have to steer it toward questions that matter. The
+agent is best seen as a strong assistant that speeds up research led by people. It does not run
+that research on its own.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
